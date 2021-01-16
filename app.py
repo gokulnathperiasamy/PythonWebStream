@@ -13,10 +13,10 @@ pattern = re.compile('(?<!\\\\)\'')
 global previous_request_time
 previous_request_time = datetime.datetime.now()
 
-rekog_client = boto3.client("rekognition")
+rekog_client = boto3.client("rekognition")      # use aws cli to configure api keys
 rekog_max_labels = 123
 rekog_min_conf = 50.0
-rekog_sampling_interval = 10    # in seconds
+rekog_sampling_interval = 30                    # in seconds
 
 camera = cv2.VideoCapture(0)
 
@@ -40,6 +40,7 @@ def process_image(img_bytes):
         previous_request_time = current_time()
         app.logger.warning(f"Image Processing Called at {current_time()}")
         rekognize_objects(img_bytes)
+        rekognize_celebs(img_bytes)
 
 
 def rekognize_objects(img_bytes):
@@ -59,12 +60,27 @@ def rekognize_objects(img_bytes):
         app.logger.warning("Unable to parse image!")
 
 
+def rekognize_celebs(img_bytes):
+    response = rekog_client.recognize_celebrities(
+        Image={
+            'Bytes': img_bytes
+        }
+    )
+    try:
+        response = pattern.sub('\"', str(response))
+        response_json = json.loads(response)
+        for celebrity in response_json["CelebrityFaces"]:
+            app.logger.warning(f"Celebrity Detected: {celebrity['Name']}")
+    except:    
+        app.logger.warning("Unable to parse image!")
+
+
 def current_time():
     return datetime.datetime.now()
 
 
 @app.route('/capture_video')
-def video_feed():
+def capture_video():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
