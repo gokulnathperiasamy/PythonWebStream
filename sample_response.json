@@ -1,0 +1,212 @@
+{
+	"Labels": [{
+		"Name": "Face",
+		"Confidence": 99.91783142089844,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Person"
+		}]
+	}, {
+		"Name": "Person",
+		"Confidence": 99.91783142089844,
+		"Instances": [{
+			"BoundingBox": {
+				"Width": 0.6952803730964661,
+				"Height": 0.9550827145576477,
+				"Left": 0.14831015467643738,
+				"Top": 0.02524736151099205
+			},
+			"Confidence": 99.60424041748047
+		}],
+		"Parents": []
+	}, {
+		"Name": "Human",
+		"Confidence": 99.91783142089844,
+		"Instances": [],
+		"Parents": []
+	}, {
+		"Name": "Head",
+		"Confidence": 97.88496398925781,
+		"Instances": [],
+		"Parents": []
+	}, {
+		"Name": "Interior Design",
+		"Confidence": 85.09905242919922,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Indoors"
+		}]
+	}, {
+		"Name": "Indoors",
+		"Confidence": 85.09905242919922,
+		"Instances": [],
+		"Parents": []
+	}, {
+		"Name": "Portrait",
+		"Confidence": 83.60149383544922,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Face"
+		}, {
+			"Name": "Photography"
+		}, {
+			"Name": "Person"
+		}]
+	}, {
+		"Name": "Photography",
+		"Confidence": 83.60149383544922,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Person"
+		}]
+	}, {
+		"Name": "Photo",
+		"Confidence": 83.60149383544922,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Person"
+		}]
+	}, {
+		"Name": "Hair",
+		"Confidence": 76.45254516601562,
+		"Instances": [],
+		"Parents": []
+	}, {
+		"Name": "Mouth",
+		"Confidence": 75.25616455078125,
+		"Instances": [],
+		"Parents": []
+	}, {
+		"Name": "Lip",
+		"Confidence": 75.25616455078125,
+		"Instances": [],
+		"Parents": []
+	}, {
+		"Name": "Selfie",
+		"Confidence": 75.17195892333984,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Portrait"
+		}, {
+			"Name": "Face"
+		}, {
+			"Name": "Photography"
+		}, {
+			"Name": "Person"
+		}]
+	}, {
+		"Name": "Man",
+		"Confidence": 63.639976501464844,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Person"
+		}]
+	}, {
+		"Name": "Skin",
+		"Confidence": 63.37660598754883,
+		"Instances": [],
+		"Parents": []
+	}, {
+		"Name": "Shelf",
+		"Confidence": 59.71269226074219,
+		"Instances": [],
+		"Parents": []
+	}, {
+		"Name": "Smile",
+		"Confidence": 58.6168327331543,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Face"
+		}, {
+			"Name": "Person"
+		}]
+	}, {
+		"Name": "Teeth",
+		"Confidence": 56.965721130371094,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Mouth"
+		}]
+	}, {
+		"Name": "Cupboard",
+		"Confidence": 54.052818298339844,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Closet"
+		}, {
+			"Name": "Furniture"
+		}]
+	}, {
+		"Name": "Furniture",
+		"Confidence": 54.052818298339844,
+		"Instances": [],
+		"Parents": []
+	}, {
+		"Name": "Closet",
+		"Confidence": 54.052818298339844,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Furniture"
+		}]
+	}, {
+		"Name": "Monitor",
+		"Confidence": 52.10481262207031,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Screen"
+		}, {
+			"Name": "Electronics"
+		}]
+	}, {
+		"Name": "Electronics",
+		"Confidence": 52.10481262207031,
+		"Instances": [],
+		"Parents": []
+	}, {
+		"Name": "Screen",
+		"Confidence": 52.10481262207031,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Electronics"
+		}]
+	}, {
+		"Name": "Display",
+		"Confidence": 52.10481262207031,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Screen"
+		}, {
+			"Name": "Electronics"
+		}]
+	}, {
+		"Name": "Home Decor",
+		"Confidence": 51.67606735229492,
+		"Instances": [],
+		"Parents": []
+	}, {
+		"Name": "Plywood",
+		"Confidence": 50.036651611328125,
+		"Instances": [],
+		"Parents": [{
+			"Name": "Wood"
+		}]
+	}, {
+		"Name": "Wood",
+		"Confidence": 50.036651611328125,
+		"Instances": [],
+		"Parents": []
+	}],
+	"LabelModelVersion": "2.0",
+	"ResponseMetadata": {
+		"RequestId": "677fd93a-4f32-4084-9256-099ee133b40c",
+		"HTTPStatusCode": 200,
+		"HTTPHeaders": {
+			"content-type": "application/x-amz-json-1.1",
+			"date": "Sat, 16 Jan 2021 12:56:57 GMT",
+			"x-amzn-requestid": "677fd93a-4f32-4084-9256-099ee133b40c",
+			"content-length": "2810",
+			"connection": "keep-alive"
+		},
+		"RetryAttempts": 0
+	}
+}
