@@ -3,3 +3,4 @@ opencv-python==4.5.1.48
 boto3==1.16.56
 python-engineio==4.0.0
 python-socketio==5.0.3
+flask_socketio==5.0.1

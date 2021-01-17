@@ -14,26 +14,53 @@
             namespace = '/test';
             var socket = io(namespace);
             socket.on('connect', function () {
-                console.log("Connected!")
+                console.log("Connected!");
                 socket.emit('connected_event', { data: 'Connected Successfully!' });
             });
             socket.on('disconnect', function () {
-                console.log("Disconnected!")
+                console.log("Disconnected!");
             });
-            socket.on('data_parsed_event', function (msg, cb) {
-                console.log("Data Received: " + msg.data)
+            socket.on('on_error_event', function (msg, cb) {
+                console.log("Error Received: " + msg.error);
+            });
+            socket.on('object_rekognition_event', function (msg, cb) {
+                // console.log("Object Received: " + msg.data);
+                received_data = JSON.parse(msg.data);
+                received_data.forEach((item) => {
+                    addItem(item.Label + " (" + item.Confidence + ")");
+                });
+
+            });
+            socket.on('celebrity_rekognition_event', function (msg, cb) {
+                // console.log("Celebrity Received: " + msg.data)
+                received_data = JSON.parse(msg.data)
+                received_data.forEach((item) => {
+                    if (item) {
+                        addItem("(Celebrity) " + item);
+                    }
+                });
             });
         });
+
+        function addItem(itemContent) {
+            var ul = document.getElementById("dynamic-list");
+            var li = document.createElement("li");
+            li.setAttribute('id', itemContent);
+            li.appendChild(document.createTextNode(itemContent));
+            ul.appendChild(li);
+        }
     </script>
 </head>
 
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8  offset-lg-2">
-                <h3 class="mt-5">Live Streaming</h3>
-                <img src="{{ url_for('capture_video') }}" width="100%">
-            </div>
+<body style="background-color: gray;">
+    <div class="container" style="height: 520px; padding-top: 20px;">
+        <div style="width:70%; float:left; padding-top: 10px;">
+            <h4 style="text-align: center; color: white;">Content From WebCam</h4>
+            <img src="{{ url_for('capture_video') }}" width="100%">
+        </div>
+        <div style="width: 30%; float:right;padding-top: 10px;">
+            <h4 style="text-align: center; color: white;">Object Detection</h4>
+            <ul id="dynamic-list"></ul>
         </div>
     </div>
 </body>

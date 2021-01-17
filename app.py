@@ -54,12 +54,18 @@ def rekognize_objects(img_bytes):
     try:
         response = pattern.sub('"', str(response))
         response_json = json.loads(response)
+        labels, confidence = [], []
+
         for label in response_json["Labels"]:
-            data_parsed_event(
-                f"{label['Name']:{20}} with confidence score of {label['Confidence']:{20}}"
-            )
+            labels.append(label["Name"])
+            confidence.append(label["Confidence"])
+
+        labels_confidence_array = [
+            {"Label": l, "Confidence": c} for l, c in zip(labels, confidence)
+        ]
+        object_rekognition_event(json.dumps(labels_confidence_array))
     except:
-        data_parsed_event("Unable to parse image!")
+        on_error_event("Unable to parse image!")
 
 
 def rekognize_celebs(img_bytes):
@@ -67,10 +73,14 @@ def rekognize_celebs(img_bytes):
     try:
         response = pattern.sub('"', str(response))
         response_json = json.loads(response)
+        celebrities = []
+
         for celebrity in response_json["CelebrityFaces"]:
-            data_parsed_event(f"Celebrity Detected: {celebrity['Name']}")
+            celebrities.append(celebrity["Name"])
+
+        celebrity_rekognition_event(json.dumps(celebrities))
     except:
-        data_parsed_event("Unable to parse image!")
+        on_error_event("Unable to parse image!")
 
 
 def current_time():
@@ -87,8 +97,16 @@ def index():
     return render_template("index.html", async_mode=socketio.async_mode)
 
 
-def data_parsed_event(data):
-    socketio.emit("data_parsed_event", {"data": data}, callback=ack, namespace="/test")
+def object_rekognition_event(data):
+    socketio.emit("object_rekognition_event", {"data": data}, callback=ack, namespace="/test")
+
+
+def celebrity_rekognition_event(data):
+    socketio.emit("celebrity_rekognition_event", {"data": data}, callback=ack, namespace="/test")
+
+
+def on_error_event(message):
+    socketio.emit("on_error_event", {"error": message}, callback=ack, namespace="/test")
 
 
 @socketio.on("connected_event", namespace="/test")
