@@ -27,7 +27,7 @@
                 // console.log("Object Received: " + msg.data);
                 received_data = JSON.parse(msg.data);
                 received_data.forEach((item) => {
-                    addItem(item.Label + " (" + item.Confidence + ")");
+                    addItem(item.Label + " (" + parseFloat(item.Confidence).toFixed(2) + "%)");
                 });
 
             });
@@ -41,7 +41,6 @@
                 });
             });
         });
-
         function addItem(itemContent) {
             var ul = document.getElementById("dynamic-list");
             var li = document.createElement("li");
@@ -60,7 +59,7 @@
         </div>
         <div style="width: 30%; float:right;padding-top: 10px;">
             <h4 style="text-align: center; color: white;">Object Detection</h4>
-            <ul id="dynamic-list"></ul>
+            <ul id="dynamic-list" style="height: 437px; background-color: teal; overflow: scroll; color: white; font-size: 14px;"></ul>
         </div>
     </div>
 </body>
