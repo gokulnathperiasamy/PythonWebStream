@@ -10,6 +10,10 @@
 > ### Detect objects and celebrities from live streaming video using AWS Rekognition, Python, Flask and SocketIO.
 
 
+### Demo
+
+![Demo Video](https://github.com/gokulnathperiasamy/PythonWebStream/blob/demo-video/demo.gif)
+
 
 ### Setup Instructions
 
