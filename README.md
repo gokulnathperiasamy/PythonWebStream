@@ -15,7 +15,7 @@
 
 1. Install [AWS CLI](https://aws.amazon.com/cli/) and configure IAM credentials using `aws configure` command from Terminal or Command-Prompt.
 2. Clone the repository and navigate to project root folder.
-3. Install the packages via `pip3 install -r requirements.txt` command. (Make sure `scikit-build` and `cmake` are installed via `pip3`).
+3. Install the packages via `pip3 install -r requirements.txt` command. (Make sure `scikit-build` and `cmake` are installed).
 4. Run the application using `python3 app.py` from Terminal or Command Prompt.
 5. From browser open `localhost:5000` to start rekoginition process.
 
